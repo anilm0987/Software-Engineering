@@ -1,0 +1,26 @@
+@startuml
+start
+
+:User logs in;
+if (Valid credentials?) then (yes)
+  :Show dashboard;
+else (no)
+  :Show "Wrong Credentials" message;
+endif
+ 
+
+:Registration for Passport;
+
+:Fill Form;
+fork
+ :Submit Details;
+fork again
+ :Submit Documents(file);
+fork again
+ :Update Database;
+end fork
+
+ 
+
+stop
+@enduml
