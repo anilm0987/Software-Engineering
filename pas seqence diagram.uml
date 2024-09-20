@@ -1,0 +1,39 @@
+@startuml
+actor Applicant
+actor System
+actor Database
+
+Applicant -> System: 1.Request for registration
+activate  Applicant
+activate System
+
+System -> Applicant:2.Registration form
+deactivate Applicant
+deactivate System
+
+
+Applicant -> System: 3.Fill in details
+activate Applicant
+activate System
+
+
+Applicant -> System: 4.Submit
+deactivate Applicant
+deactivate System
+
+
+System -> Applicant: 5.Give Applicant id
+activate Applicant
+activate System
+deactivate Applicant
+deactivate System
+
+
+System -> Database: 6.store full details
+activate System
+activate Database
+deactivate System 
+deactivate Database
+
+
+@enduml
