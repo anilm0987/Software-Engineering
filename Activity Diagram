@@ -1,26 +1,50 @@
 @startuml
 start
 
-:User logs in;
-if (Valid credentials?) then (yes)
-  :Show dashboard;
-else (no)
-  :Show "Wrong Credentials" message;
-endif
- 
+:User Login;
 
-:Registration for Passport;
+:User Starts Passport Application;
 
-:Fill Form;
+:Fill Out Passport Application Form;
+
+:Upload Documents;
+
+:Submit Application;
+
 fork
- :Submit Details;
+:Update Database;
 fork again
- :Submit Documents(file);
-fork again
- :Update Database;
+:Get New Application in Admin Dashboard;
 end fork
 
- 
+:Admin Login;
 
+if (Application Complete?) then (yes)
+  :Application Submitted Successfully;
+  :Process Application;
+  :Verify Documents;
+
+  if (Documents Valid?) then (yes)
+    :Generate Report;
+    :Notify Regional Administrator;
+    :Notify User;
+  else (no)
+    :Request Additional or Change in Documents;
+  endif
+else (no)
+  :Notify User of Incomplete Application;
+endif
+
+:Regional Administrator Verification;
+ if (Documents Valid?) then (yes)
+ :Generate Report;
+ :Notify User;
+ :Receive Passport;
+ else (no)
+  :Cancel;
+  
+  end if
+  
 stop
 @enduml
+
