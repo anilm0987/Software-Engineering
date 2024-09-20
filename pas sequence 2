@@ -1,0 +1,51 @@
+@startuml
+    participant Admin
+    participant System
+    participant AdminPanel
+    participant Database
+    participant Applicant
+    Applicant->System:1.Login and submit details
+ activate Applicant
+   activate System
+   deactivate Applicant
+    deactivate System
+    Admin->System:2. Username / Password
+    activate Admin
+    activate System
+     deactivate Admin
+    deactivate System
+    System->AdminPanel: 3.Authentication Succeed
+    activate System
+    activate AdminPanel
+    deactivate System
+    deactivate AdminPanel
+   Database->AdminPanel:4. Details of Applications Yet to be processed
+   activate Database
+   activate AdminPanel
+   deactivate Database
+    deactivate AdminPanel
+    
+    Database->AdminPanel:5. Details of Applications Dispatched
+    activate Database
+   activate AdminPanel
+   deactivate Database
+    deactivate AdminPanel
+    
+    Admin->Database:6.Enter Applicant Id to Process
+    activate Database
+   activate Admin
+   deactivate Database
+    deactivate Admin
+    
+    Admin->Applicant:7. Notify user 
+     activate Applicant
+   activate Admin
+   deactivate Applicant
+    deactivate Admin
+    Admin->Applicant:8.Dispatch eligible passport
+    activate Applicant
+   activate Admin
+   deactivate Applicant
+    deactivate Admin
+    
+    @enduml
